@@ -1,4 +1,6 @@
-node {
+pipeline {
+
+	node {
 		stages {
 			stage('Clone Git repository') {
 				steps {
@@ -21,4 +23,5 @@ node {
 			}
 		
 		}
+	}
 }

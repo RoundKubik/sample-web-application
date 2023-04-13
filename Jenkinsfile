@@ -1,9 +1,9 @@
 pipeline {
 	agent any
 	stages {
-		stage('Build pipeline_1') {
+		stage('Clone Git repository') {
 			steps {
-				echo 'Building pipeline_1'
+				checkout scm
 			}
 		}
         stage('Test pipeline_1') {

@@ -5,7 +5,7 @@ stages {
     }
   }
   stage('Test') {
-    steps
+    steps {
       sh 'echo "This is my Test step"'
     }
   }

@@ -1,18 +1,23 @@
-stages {
-  stage('Build') {
-    steps {
-      sh 'echo "This is my first step"'
+pipelineJob {
+    definition {
+        cps {
+            script('''
+        node {
+            stage('Build pipeline_1') {
+                echo 'Building pipeline_1\'
+            }
+            stage('Test pipeline_1') {
+                echo 'Testing pipeline_1\'
+            }
+            stage('Deploy pipeline_1') {
+                echo 'Deploying pipeline_1\'
+            }
+        }
+      '''.stripIndent())
+            sandbox()
+        }
     }
-  }
-  stage('Test') {
-    steps {
-      sh 'echo "This is my Test step"'
-    }
-  }
-  stage('Deploy') {
-    steps {
-      sh 'echo "This is my Deploy step"'
-    }
-  }
 }
+
+
 

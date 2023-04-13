@@ -6,6 +6,11 @@ pipeline {
 				checkout scm
 			}
 		}
+		stage('Build project') {
+			steps {
+				sh 'mvn clean package'
+			}
+		}
         stage('Build image') {
             steps {
 				sh 'echo Build application image'

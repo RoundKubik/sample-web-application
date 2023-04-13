@@ -10,7 +10,7 @@ pipeline {
             steps {
 				sh 'echo Build application image'
 					script {
-						app = docker.build("roundkubik/docker_id", "./Dockerfile")
+						app = docker.build("roundkubik/docker_id", "Dockerfile")
 					}
             }
 		}

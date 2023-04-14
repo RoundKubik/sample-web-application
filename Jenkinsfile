@@ -23,7 +23,7 @@ pipeline {
 			steps {
 				sh 'echo Push image to a Docker Hub'
 				script {
-					docker.withRegistry('https://registry.hub.docker.com', 'docker_id') {
+					docker.withRegistry('https://registry.example.com', 'docker_id') {
 						app.push("latest") 
 					}
 				}

@@ -1,16 +1,18 @@
 ---
 - hosts: localhost
 - name: Run all-your-base-image
-  docker_container:
-    name: all-your-base
-    image: < имя_вашего_репозитория>/<имя_образа >:latest
-    state: started
-    recreate: yes
-    pull: true
-    ports:
-     - "80:80"
-    exposed_ports:
-      - "80"
-    detach: true
-    container_default_behavior: compatibility
+  tasks:
+    - name: build container
+    docker_container:
+      name: all-your-base
+      image: roundkubik/docker_id:latest
+      state: started
+      recreate: yes
+      pull: true
+      ports:
+        - "80:80"
+      exposed_ports:
+        - "80"
+      detach: true
+      container_default_behavior: compatibility
 ...

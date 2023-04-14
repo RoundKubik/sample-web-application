@@ -34,5 +34,12 @@ pipeline {
                 echo 'Deploying pipeline_1'
             }
 		}
+		stage('Run container') {
+			steps {
+				sh 'echo Run container'
+				sh 'ansible-playbook /opt/playbooks/docker_playbook.yaml -i /opt/playbooks/hosts'
+				
+			}
+		}
 	}
 }

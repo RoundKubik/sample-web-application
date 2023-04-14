@@ -1,4 +1,5 @@
 ---
+- hosts: localhost
 - name: Run all-your-base-image
   tasks:
     - name: build container

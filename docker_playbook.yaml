@@ -1,6 +1,6 @@
 ---
-- hosts: all
 - name: Run all-your-base-image
+  hosts: hosts
   tasks:
     - name: build container
       docker_container:

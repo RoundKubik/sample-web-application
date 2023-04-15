@@ -1,5 +1,5 @@
 ---
-- hosts: hosts
+- hosts: webservers
 - name: Run all-your-base-image
   tasks:
     - name: build container

@@ -10,9 +10,9 @@
         recreate: yes
         pull: true
         ports:
-          - "80:80"
+          - "20:20"
         exposed_ports:
-          - "80"
+          - "20"
         detach: true
         container_default_behavior: compatibility
 ...

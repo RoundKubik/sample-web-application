@@ -1,5 +1,6 @@
 ---
 - hosts: hosts
+      http_port: 80
 - name: Run all-your-base-image
   tasks:
     - name: build container

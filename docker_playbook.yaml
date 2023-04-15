@@ -1,8 +1,4 @@
 ---
-- hosts:
-    localhost:
-      vars:
-        ansible_connection: local
 - name: Run all-your-base-image
   tasks:
     - name: build container

@@ -37,7 +37,7 @@ pipeline {
 		stage('Run container') {
 			steps {
 				sh 'echo Run container'
-				sh 'ansible-playbook /var/jenkins_home/workspace/test_web_app/docker_playbook.yaml -c local -i localhost'
+				sh 'ansible-playbook /var/jenkins_home/workspace/test_web_app/docker_playbook.yaml -c local -i hosts'
 				
 			}
 		}

@@ -29,11 +29,6 @@ pipeline {
 				}
 			}	
 		}
-        stage('Deploy pipeline_1') {
-			steps {
-                echo 'Deploying pipeline_1'
-            }
-		}
 		stage('Run container') {
 			steps {
 				sh 'echo Run container'

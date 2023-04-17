@@ -41,7 +41,7 @@ pipeline {
 				sh 'echo Run SAST - SonarQube analysis'
 					script {
 
-						withSonarQubeEnv(installationName: 'sonar_scanner') {
+						withSonarQubeEnv(installationName: 'SonarQube') {
 							      sh 'mvn sonar:sonar'
 						}
 					}

@@ -40,8 +40,9 @@ pipeline {
 			steps {
 				sh 'echo Run SAST - SonarQube analysis'
 					script {
+					def scannerHome = tool 'sonar_scanner';
+
 						withSonarQubeEnv(installationName: 'sonar_scanner') {
-						                sh 'mvn clean package sonar:sonar'
 						}
 					}
 			}

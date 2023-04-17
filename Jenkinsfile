@@ -41,8 +41,8 @@ pipeline {
 				sh 'echo Run SAST - SonarQube analysis'
 					script {
 
-						withSonarQubeEnv('sonar_scanner') {
-							sh 'mvn clean package sonar:sonar'
+						withSonarQubeEnv(installationName: 'sonar_scanner') {
+							      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
 						}
 					}
 			}

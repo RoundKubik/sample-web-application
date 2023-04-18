@@ -53,7 +53,11 @@ pipeline {
 			}
 		}
 		stage("SonarQube Quality Gate") {
-			waitForQualityGate abortPipeline: true
+			steps {
+				script {
+					waitForQualityGate abortPipeline: true
+				}
+			}
 		}
 		stage('Trivy analysis') {
 			steps {

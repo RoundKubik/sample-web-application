@@ -46,7 +46,7 @@ pipeline {
 								-Dsonar.projectKey=WebApp \
 								-Dsonar.sources=. \
 								-Dsonar.css.node=. \
-								-Dsonar.host.url=http://172.29.0.1:9000 \
+								-Dsonar.host.url=http://172.29.0.2:9000 \
 								-Dsonar.login=squ_901744030c31ad28b86e1bd8410b0b15176108ff"
 						}
 					}

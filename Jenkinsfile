@@ -52,5 +52,14 @@ pipeline {
 					}
 			}
 		}
+		stage("SonarQube Quality Gate") {
+			waitForQualityGate abortPipeline: true
+		}
+		stage('Trivy analysis') {
+			steps {
+				sh 'echo Trivy check'
+				sh 'trivy image --exit-code 1 --severity CRITICAL,HIGH roundkubik/docker_id:latest '
+			}		
+		}
 	}
 }

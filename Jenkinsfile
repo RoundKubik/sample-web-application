@@ -40,7 +40,7 @@ pipeline {
 			steps {
 				sh 'echo Run SAST - SonarQube analysis'
 					script {
-						def scannerHome = tool 'sonarqube';
+						def scannerHome = tool 'sonarqube-scanner';
 						withSonarQubeEnv("sonar-container") {
 							      sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=WebApp"
 						}

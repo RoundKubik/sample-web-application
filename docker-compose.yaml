@@ -1,0 +1,64 @@
+version: "3.8"
+ 
+services:
+   jenkins:
+       image: jenkins/jenkins:lts
+       restart: always
+       privileged: true
+       user: root
+       ports:
+           - 8080:8080
+           - 50000:50000
+       container_name: jenkins_configured
+       volumes:
+       - /var/run/docker.sock:/var/run/docker.sock
+       - /home/roundkubik/sonar_jenkins/jenkins/jenkins_home:/var/jenkins_home
+       environment:
+       - "JENKINS_OPTS=--prefix=/jenkins"
+
+   sonarqube:
+       image: sonarqube:community
+       container_name: sonar-container
+       restart: always
+       hostname: sonarqube
+       networks:
+           - sonarnet
+       depends_on:
+         - postgressdb
+       environment:
+           - SONARQUBE_JDBC_USERNAME=sonar
+           - SONARQUBE_JDBC_PASSWORD=windupass
+           - SONARQUBE_JDBC_URL=jdbc:postgresql://postgressdb:5432/sonarqube
+       ports:
+       - 9000:9000
+       - 9092:9092
+       volumes:
+       - sonarqube_conf:/opt/sonarqube/conf/
+       - sonarqube_data:/opt/sonarqube/data/
+       - sonarqube_logs:/opt/sonarqube/logs/
+  
+   postgressdb:
+       image: postgres:12.1
+       container_name: postgres-container
+       restart: always
+       hostname: postgresql
+       networks:
+           - sonarnet
+       environment:
+           - POSTGRES_USER=sonar
+           - POSTGRES_PASSWORD=windupass
+           - POSTGRES_DB=sonarqube
+       volumes:
+       - sonarqube_db:/var/lib/postgresql
+       - postgresql_data:/var/lib/postgresql/data
+ 
+volumes:
+    sonarqube_data:
+    sonarqube_conf:
+    sonarqube_logs:
+    sonarqube_db:
+    postgresql_data:
+
+networks:
+   sonarnet:
+    driver: bridge
